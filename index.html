@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="flare.json"></script>
+  <!-- <script src="flare.json"></script> -->
   <title>Fifa 19 Data Viz</title>
 
   <style>
@@ -50,12 +50,12 @@
     var link = svg.append("g").selectAll(".link"),
         node = svg.append("g").selectAll(".node");
 
-    d3.json("flare.json", function(error, classes) {
+    d3.json("fifa.json", function(error, classes) {
       if (error) throw error;
-
+      
       var root = packageHierarchy(classes)
-          .sum(function(d) { return d.size; });
-
+          .sum(function(d) {  return d.size; });
+          debugger
       cluster(root);
 
       link = link
@@ -72,18 +72,7 @@
           .attr("dy", "0.31em")
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + (d.y + 8) + ",0)" + (d.x < 180 ? "" : "rotate(180)"); })
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-          .text(function(d) { return d.data.key; })
-        .on("mouseover", function(d){
-          d3.selectAll(".node").style("fill", "black");
-          d3.selectAll(".link").style("stroke", "steelblue");
-          colorNode(d.name);
-          
-          d.imports.forEach(function(name){
-            colorNode(name);
-            // colorLink(d.name, name);
-          });
-        });  
-          
+          .text(function(d) { return d.data.key; });
     });
 
     // Lazily construct the package hierarchy from class names.
@@ -130,19 +119,19 @@
       return imports;
     }
 
-    function colorLink(src,tgt){
-      let link_color = d3.selectAll(".link")[0].filter(function(d){
-        return (d3.select(d).data()[0][0].name == src && d3.select(d).data()[0][2].name == tgt);
-      });
-      d3.selectAll(link_color).style("stroke", "red");
-    }
-    function colorNode(name){
+    // function colorLink(src,tgt){
+    //   var link = d3.selectAll(".link")[0].filter(function(d){
+    //     return (d3.select(d).data()[0][0].name == src && d3.select(d).data()[0][2].name == tgt);
+    //   });
+    //   d3.selectAll(link).style("stroke", "red");
+    // }
+    // function colorNode(name){
       //iterate through all teh dom and get teh DOM which has the data
-      let link_color = d3.selectAll(".node")[0].filter(function(d){
-        return d3.select(d).data()[0].name == name;
-      });
-      d3.selectAll(link_color).style("fill", "red");
-    }
+    //   var node = d3.selectAll(".node")[0].filter(function(d){
+    //     return d3.select(d).data()[0].name == name;
+    //   });
+    //   d3.selectAll(node).style("fill", "red");
+    // }
 
     </script>
 
