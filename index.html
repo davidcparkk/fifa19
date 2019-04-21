@@ -72,7 +72,18 @@
           .attr("dy", "0.31em")
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + (d.y + 8) + ",0)" + (d.x < 180 ? "" : "rotate(180)"); })
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-          .text(function(d) { return d.data.key; });
+          .text(function(d) { return d.data.key; })
+        .on("mouseover", function(d){
+          d3.selectAll(".node").style("fill", "black");
+          d3.selectAll(".link").style("stroke", "steelblue");
+          colorNode(d.name);
+          
+          d.imports.forEach(function(name){
+            colorNode(name);
+            // colorLink(d.name, name);
+          });
+        });  
+          
     });
 
     // Lazily construct the package hierarchy from class names.
@@ -118,6 +129,21 @@
 
       return imports;
     }
+
+    function colorLink(src,tgt){
+      let link_color = d3.selectAll(".link")[0].filter(function(d){
+        return (d3.select(d).data()[0][0].name == src && d3.select(d).data()[0][2].name == tgt);
+      });
+      d3.selectAll(link_color).style("stroke", "red");
+    }
+    function colorNode(name){
+      //iterate through all teh dom and get teh DOM which has the data
+      let link_color = d3.selectAll(".node")[0].filter(function(d){
+        return d3.select(d).data()[0].name == name;
+      });
+      d3.selectAll(link_color).style("fill", "red");
+    }
+
     </script>
 
 </body>
