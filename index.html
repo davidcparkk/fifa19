@@ -50,7 +50,7 @@
     var link = svg.append("g").selectAll(".link"),
         node = svg.append("g").selectAll(".node");
 
-    d3.json("fifa.json", function(error, classes) {
+    d3.json("fifa_data_clean2.json", function(error, classes) {
       if (error) throw error;
       
       var root = packageHierarchy(classes)
@@ -113,6 +113,7 @@
       nodes.forEach(function(d) {
         // debugger
         if (d.data.imports) d.data.imports.forEach(function(i) {
+          // debugger
           imports.push(map[d.data.name].path(map[i]));
         });
       });
