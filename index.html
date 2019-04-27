@@ -9,11 +9,12 @@
 
   <style>
     .node {
-      font: 10px sans-serif;
+      font: 17px sans-serif;
+      fill: #1a761a;
     }
 
     .link {
-      stroke: steelblue;
+      stroke: #1bc51b;
       stroke-opacity: 0.5;
       fill: none;
       pointer-events: none;
@@ -26,6 +27,17 @@
   <script src="dist/bundle.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   
+  <div class="title">FIFA19 Visualized</div>
+  <img src="" class="background-image">
+  
+  <div class="wrapper">
+    <div class="row" id="main-container">
+      <div class="fifa19-bundle"></div>
+      <div class="bundle-details"></div>
+    </div>
+
+
+  </div>
 
   <script>
 
@@ -72,7 +84,23 @@
           .attr("dy", "0.31em")
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + (d.y + 8) + ",0)" + (d.x < 180 ? "" : "rotate(180)"); })
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-          .text(function(d) { return d.data.key; });
+          .text(function(d) { return d.data.key; })
+        .on("mouseover", function(d){
+        // debugger
+          d3.selectAll(".node").style("fill", "#e0e0e0");
+          d3.selectAll(".link").style("stroke", "#e0e0e0");
+          colorNode(d.data.name);
+          
+          d.data.imports.forEach(function(name){
+            colorNode(name);
+            colorLink(d.data.name, name);
+          });
+        })
+        .on("mouseout", function(d){
+        // debugger
+          d3.selectAll(".node").style("fill", "#1a761a");
+          d3.selectAll(".link").style("stroke", "#1bc51b");
+        });
     });
 
     // Lazily construct the package hierarchy from class names.
@@ -121,19 +149,24 @@
       return imports;
     }
 
-    // function colorLink(src,tgt){
-    //   var link = d3.selectAll(".link")[0].filter(function(d){
-    //     return (d3.select(d).data()[0][0].name == src && d3.select(d).data()[0][2].name == tgt);
-    //   });
-    //   d3.selectAll(link).style("stroke", "red");
-    // }
-    // function colorNode(name){
-      //iterate through all teh dom and get teh DOM which has the data
-    //   var node = d3.selectAll(".node")[0].filter(function(d){
-    //     return d3.select(d).data()[0].name == name;
-    //   });
-    //   d3.selectAll(node).style("fill", "red");
-    // }
+    function colorLink(src,tgt){
+      // debugger
+      let link_selections = d3.selectAll(".link");
+      let link = link_selections.nodes().filter(function(d){
+        // debugger
+        return (d3.select(d).data()[0].source.data.name == src && d3.select(d).data()[0].target.data.name == tgt);
+      });
+      d3.selectAll(link).style("stroke", "red");
+    }
+
+    function colorNode(name){
+      // debugger
+      let node_selections = d3.selectAll(".node");
+      let node = node_selections.nodes().filter(function(d){
+        return d3.select(d).data()[0].data.name == name;
+      });
+      d3.selectAll(node).style("fill", "red");
+    }
 
     </script>
 
