@@ -8,6 +8,9 @@
   <title>Fifa 19 Data Viz</title>
 
   <style>
+    .body{
+      background: blue;
+    }
     .node {
       font: 17px sans-serif;
       fill: #1a761a;
@@ -21,6 +24,21 @@
       stroke-opacity: 0.5;
       fill: none;
       pointer-events: none;
+    }
+
+    .title{
+      display: block;
+      font-size: 50px;
+      font-weight: bold;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #main-container{
+      display: flex;
+      justify-content: center;
     }
     </style>
 
@@ -73,6 +91,38 @@
           // debugger
       cluster(root);
 
+        var Tooltip = d3.select("#fifa19-bundle")
+          .append("div")
+          .style("opacity", 0)
+          .attr("class", "tooltip")
+          .style("background-color", "black")
+          .style("border", "solid")
+          .style("border-width", "2px")
+          .style("border-radius", "5px")
+          .style("padding", "5px")
+
+        // Three function that change the tooltip when user hover / move / leave a cell
+        var mouseoverF = function(d) {
+          Tooltip
+            .style("opacity", 1)
+          d3.select(this)
+            .style("stroke", "black")
+            .style("opacity", 1)
+        }
+        var mousemove = function(d) {
+          Tooltip
+            .html("The exact value of<br>this cell is: ")
+            .style("left", (d3.mouse(this)[0]+70) + "px")
+            .style("top", (d3.mouse(this)[1]) + "px")
+        }
+        var mouseleave = function(d) {
+          Tooltip
+            .style("opacity", 0)
+          d3.select(this)
+            .style("stroke", "none")
+            .style("opacity", 0.8)
+        }
+
       link = link
         .data(packageImports(root.leaves()))
         .enter().append("path")
@@ -90,6 +140,7 @@
           .text(function(d) { return d.data.key; })
         .on("mouseover", function(d){
         // debugger
+          
           d3.selectAll(".node").style("fill", "#e0e0e0");
           d3.selectAll(".link").style("stroke", "#e0e0e0");
           colorNode(d.data.name);
@@ -98,12 +149,16 @@
             colorNode(name);
             colorLink(d.data.name, name);
           });
+          mouseoverF;
         })
         .on("mouseout", function(d){
         // debugger
           d3.selectAll(".node").style("fill", "#1a761a");
           d3.selectAll(".link").style("stroke", "#1bc51b");
-        });
+        })
+        
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave);
     });
 
     // Lazily construct the package hierarchy from class names.
