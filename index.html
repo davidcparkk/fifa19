@@ -99,7 +99,7 @@
       .attr("class", "tooltip")				
       .style("opacity", 0);
 
-    d3.json("lucky_jsonJuv.json", function(error, classes) {
+    d3.json("fifa_data.json", function(error, classes) {
       if (error) throw error;
       
       let root = packageHierarchy(classes)
