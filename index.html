@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <script src="flare.json"></script> -->
   <title>Fifa 19 Data Viz</title>
 
   <style>
@@ -42,22 +41,24 @@
     }
 
     div.tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 60px;					
-    height: 28px;					
-    padding: 2px;				
-    font: 12px sans-serif;		
-    background: blue;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
+      position: absolute;			
+      text-align: center;	
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;		
+      width: 180px;					
+      height: 260px;					
+      padding: 2px;				
+      font: 17px sans-serif;		
+      background: #E8E8E8;	
+      border: 1px solid #dcdcdc;		
+      border-radius: 8px;			
+      pointer-events: none;			
     }
     </style>
-
 </head>
 <body>
-  
   <script src="dist/bundle.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   
@@ -69,76 +70,42 @@
       <div id="fifa19-bundle"></div>
       <div class="bundle-details"></div>
     </div>
-
-
   </div>
 
   <script>
 
-    var diameter = 960,
+    let diameter = 960,
     radius = diameter / 2,
     innerRadius = radius - 120;
 
-    var cluster = d3.cluster()
+    let cluster = d3.cluster()
         .size([360, innerRadius]);
 
-    var line = d3.radialLine()
+    let line = d3.radialLine()
         .curve(d3.curveBundle.beta(0.85))
         .radius(function(d) { return d.y; })
         .angle(function(d) { return d.x / 180 * Math.PI; });
 
-    var svg = d3.select("#fifa19-bundle").append("svg")
+    let svg = d3.select("#fifa19-bundle").append("svg")
         .attr("width", diameter)
         .attr("height", diameter)
       .append("g")
         .attr("transform", "translate(" + radius + "," + radius + ")");
 
-    var link = svg.append("g").selectAll(".link"),
+    let link = svg.append("g").selectAll(".link"),
         node = svg.append("g").selectAll(".node");
 
-    var div = d3.select("#fifa19-bundle").append("div")	
+    let div = d3.select("#fifa19-bundle").append("div")	
       .attr("class", "tooltip")				
       .style("opacity", 0);
 
     d3.json("fifa_data_clean2.json", function(error, classes) {
       if (error) throw error;
       
-      var root = packageHierarchy(classes)
+      let root = packageHierarchy(classes)
           .sum(function(d) {  return d.size; });
           // debugger
       cluster(root);
-
-        // var Tooltip = d3.select("#fifa19-bundle")
-        //   .append("div")
-        //   .style("opacity", 0)
-        //   .attr("class", "tooltip")
-        //   .style("background-color", "black")
-        //   .style("border", "solid")
-        //   .style("border-width", "2px")
-        //   .style("border-radius", "5px")
-        //   .style("padding", "5px")
-
-
-
-        // Three function that change the tooltip when user hover / move / leave a cell
-        // var mouseoverF = function(d) {
-        //   // debugger
-        //   Tooltip
-        //     .style("opacity", 1)
-
-        // }
-        // var mousemove = function(d) {
-        //   Tooltip
-        //     .html("The exact value of<br>this cell is: ")
-        //     .style("left", (d3.mouse(this)[0]+70) + "px")
-        //     .style("top", (d3.mouse(this)[1]) + "px")
-        // }
-        // var mouseleave = function(d) {
-        //   Tooltip
-        //     .transition()
-        //     .duration(200)
-        //     .style("opactiy",0)
-        // }
 
       link = link
         .data(packageImports(root.leaves()))
@@ -156,28 +123,25 @@
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
           .text(function(d) { return d.data.key; })
         .on("mouseover", function(d){
-        // debugger
-          
           d3.selectAll(".node").style("fill", "#e0e0e0");
           d3.selectAll(".link").style("stroke", "#e0e0e0");
-          colorNode(d.data.name);
           
+          colorNode(d.data.name);
+
           d.data.imports.forEach(function(name){
             colorNode(name);
             colorLink(d.data.name, name);
           });
 
           div.transition()		
-                .duration(200)		
-                .style("opacity", .9);		
-            div	.html("hello")	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY - 28) + "px");	
+              .duration(200)		
+              .style("opacity", .9);		
+          div.html("hello")	
+              .style("left", (d3.event.pageX + 50) + "px")		
+              .style("top", (d3.event.pageY - 60) + "px");	
           })	
-          // mouseoverF(d);
         
         .on("mouseout", function(d){
-        // debugger
           d3.selectAll(".node").style("fill", "#1a761a");
           d3.selectAll(".link").style("stroke", "#1bc51b");
 
@@ -187,12 +151,11 @@
         });
     });
 
-    // Lazily construct the package hierarchy from class names.
     function packageHierarchy(classes) {
-      var map = {};
+      let map = {};
 
       function find(name, data) {
-        var node = map[name], i;
+        let node = map[name], i;
         if (!node) {
           node = map[name] = data || {name: name, children: []};
           if (name.length) {
@@ -211,21 +174,16 @@
       return d3.hierarchy(map[""]);
     }
 
-    // Return a list of imports for the given array of nodes.
     function packageImports(nodes) {
-      var map = {},
+      let map = {},
           imports = [];
 
-      // Compute a map from name to node.
       nodes.forEach(function(d) {
         map[d.data.name] = d;
       });
 
-      // For each import, construct a link from the source to target node.
       nodes.forEach(function(d) {
-        // debugger
         if (d.data.imports) d.data.imports.forEach(function(i) {
-          // debugger
           imports.push(map[d.data.name].path(map[i]));
         });
       });
@@ -234,24 +192,20 @@
     }
 
     function colorLink(src,tgt){
-      // debugger
       let link_selections = d3.selectAll(".link");
       let link = link_selections.nodes().filter(function(d){
-        // debugger
         return (d3.select(d).data()[0].source.data.name == src && d3.select(d).data()[0].target.data.name == tgt);
       });
       d3.selectAll(link).style("stroke", "red");
     }
 
     function colorNode(name){
-      // debugger
       let node_selections = d3.selectAll(".node");
       let node = node_selections.nodes().filter(function(d){
         return d3.select(d).data()[0].data.name == name;
       });
       d3.selectAll(node).style("fill", "red");
     }
-
     </script>
 
 </body>
