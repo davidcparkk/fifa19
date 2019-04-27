@@ -40,6 +40,19 @@
       display: flex;
       justify-content: center;
     }
+
+    div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: blue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+    }
     </style>
 
 </head>
@@ -83,6 +96,10 @@
     var link = svg.append("g").selectAll(".link"),
         node = svg.append("g").selectAll(".node");
 
+    var div = d3.select("#fifa19-bundle").append("div")	
+      .attr("class", "tooltip")				
+      .style("opacity", 0);
+
     d3.json("fifa_data_clean2.json", function(error, classes) {
       if (error) throw error;
       
@@ -91,37 +108,37 @@
           // debugger
       cluster(root);
 
-        var Tooltip = d3.select("#fifa19-bundle")
-          .append("div")
-          .style("opacity", 0)
-          .attr("class", "tooltip")
-          .style("background-color", "black")
-          .style("border", "solid")
-          .style("border-width", "2px")
-          .style("border-radius", "5px")
-          .style("padding", "5px")
+        // var Tooltip = d3.select("#fifa19-bundle")
+        //   .append("div")
+        //   .style("opacity", 0)
+        //   .attr("class", "tooltip")
+        //   .style("background-color", "black")
+        //   .style("border", "solid")
+        //   .style("border-width", "2px")
+        //   .style("border-radius", "5px")
+        //   .style("padding", "5px")
+
+
 
         // Three function that change the tooltip when user hover / move / leave a cell
-        var mouseoverF = function(d) {
-          Tooltip
-            .style("opacity", 1)
-          d3.select(this)
-            .style("stroke", "black")
-            .style("opacity", 1)
-        }
-        var mousemove = function(d) {
-          Tooltip
-            .html("The exact value of<br>this cell is: ")
-            .style("left", (d3.mouse(this)[0]+70) + "px")
-            .style("top", (d3.mouse(this)[1]) + "px")
-        }
-        var mouseleave = function(d) {
-          Tooltip
-            .style("opacity", 0)
-          d3.select(this)
-            .style("stroke", "none")
-            .style("opacity", 0.8)
-        }
+        // var mouseoverF = function(d) {
+        //   // debugger
+        //   Tooltip
+        //     .style("opacity", 1)
+
+        // }
+        // var mousemove = function(d) {
+        //   Tooltip
+        //     .html("The exact value of<br>this cell is: ")
+        //     .style("left", (d3.mouse(this)[0]+70) + "px")
+        //     .style("top", (d3.mouse(this)[1]) + "px")
+        // }
+        // var mouseleave = function(d) {
+        //   Tooltip
+        //     .transition()
+        //     .duration(200)
+        //     .style("opactiy",0)
+        // }
 
       link = link
         .data(packageImports(root.leaves()))
@@ -149,16 +166,25 @@
             colorNode(name);
             colorLink(d.data.name, name);
           });
-          mouseoverF;
-        })
+
+          div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html("hello")	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");	
+          })	
+          // mouseoverF(d);
+        
         .on("mouseout", function(d){
         // debugger
           d3.selectAll(".node").style("fill", "#1a761a");
           d3.selectAll(".link").style("stroke", "#1bc51b");
-        })
-        
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave);
+
+          div.transition()		
+            .duration(500)		
+            .style("opacity", 0);	
+        });
     });
 
     // Lazily construct the package hierarchy from class names.
