@@ -122,6 +122,19 @@
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + (d.y + 8) + ",0)" + (d.x < 180 ? "" : "rotate(180)"); })
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
           .text(function(d) { return d.data.key; })
+          .style("fill", function(d){
+            if (d.data.nodeType=="player"){
+              return 'blue';
+            } else if (d.data.nodeType=="nation") {
+              return 'green';
+            } else if (d.data.nodeType=="club") {
+              return 'orange';
+            } else if (d.data.nodeType=="foot") {
+              return 'purple';
+            } else if (d.data.nodeType=="position") {
+              return 'black';
+            }
+          })
         .on("mouseover", function(d){
           d3.selectAll(".node").style("fill", "#e0e0e0");
           d3.selectAll(".link").style("stroke", "#e0e0e0");
@@ -142,7 +155,20 @@
           })	
         
         .on("mouseout", function(d){
-          d3.selectAll(".node").style("fill", "#1a761a");
+          d3.selectAll(".node")
+          .style("fill", function(d){
+            if (d.data.nodeType=="player"){
+              return 'blue';
+            } else if (d.data.nodeType=="nation") {
+              return 'green';
+            } else if (d.data.nodeType=="club") {
+              return 'orange';
+            } else if (d.data.nodeType=="foot") {
+              return 'purple';
+            } else if (d.data.nodeType=="position") {
+              return 'black';
+            }
+          });
           d3.selectAll(".link").style("stroke", "#1bc51b");
 
           div.transition()		
@@ -162,8 +188,20 @@
             node.parent = find(name.substring(0, i = name.lastIndexOf(".")));
             node.parent.children.push(node);
             node.key = name.substring(i + 1);
+            if (node.name.includes('player')) {
+              node.nodeType = 'player';
+            } else if (node.name.includes('nation')){
+              node.nodeType = 'nation';
+            } else if (node.name.includes('club')){
+              node.nodeType = 'club';
+            } else if (node.name.includes('foot')){
+              node.nodeType = 'foot';
+            } else if (node.name.includes('position')){
+              node.nodeType = 'position';
+            }
           }
         }
+        // debugger
         return node;
       }
 
