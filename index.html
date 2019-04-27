@@ -99,7 +99,7 @@
       .attr("class", "tooltip")				
       .style("opacity", 0);
 
-    d3.json("fifa_data_clean2.json", function(error, classes) {
+    d3.json("lucky_json.json", function(error, classes) {
       if (error) throw error;
       
       let root = packageHierarchy(classes)
@@ -126,6 +126,7 @@
             return d.data.nodeColor;
           })
         .on("mouseover", function(d){
+          debugger
           d3.selectAll(".node").style("fill", "#e0e0e0");
           d3.selectAll(".link").style("stroke", "#e0e0e0");
           
