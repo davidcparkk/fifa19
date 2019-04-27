@@ -19,7 +19,7 @@
     }
 
     .link {
-      stroke: #1bc51b;
+      stroke: gray;
       stroke-opacity: 0.5;
       fill: none;
       pointer-events: none;
@@ -123,27 +123,17 @@
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
           .text(function(d) { return d.data.key; })
           .style("fill", function(d){
-            if (d.data.nodeType=="player"){
-              return 'blue';
-            } else if (d.data.nodeType=="nation") {
-              return 'green';
-            } else if (d.data.nodeType=="club") {
-              return 'orange';
-            } else if (d.data.nodeType=="foot") {
-              return 'purple';
-            } else if (d.data.nodeType=="position") {
-              return 'black';
-            }
+            return d.data.nodeColor;
           })
         .on("mouseover", function(d){
           d3.selectAll(".node").style("fill", "#e0e0e0");
           d3.selectAll(".link").style("stroke", "#e0e0e0");
           
-          colorNode(d.data.name);
+          colorNode(d.data.name, d.data.nodeColor);
 
           d.data.imports.forEach(function(name){
-            colorNode(name);
-            colorLink(d.data.name, name);
+            colorNode(name, d.data.nodeColor);
+            colorLink(d.data.name, name, d.data.nodeColor);
           });
 
           div.transition()		
@@ -157,19 +147,9 @@
         .on("mouseout", function(d){
           d3.selectAll(".node")
           .style("fill", function(d){
-            if (d.data.nodeType=="player"){
-              return 'blue';
-            } else if (d.data.nodeType=="nation") {
-              return 'green';
-            } else if (d.data.nodeType=="club") {
-              return 'orange';
-            } else if (d.data.nodeType=="foot") {
-              return 'purple';
-            } else if (d.data.nodeType=="position") {
-              return 'black';
-            }
+            return d.data.nodeColor;
           });
-          d3.selectAll(".link").style("stroke", "#1bc51b");
+          d3.selectAll(".link").style("stroke", "gray");
 
           div.transition()		
             .duration(500)		
@@ -190,14 +170,19 @@
             node.key = name.substring(i + 1);
             if (node.name.includes('player')) {
               node.nodeType = 'player';
+              node.nodeColor = 'blue';
             } else if (node.name.includes('nation')){
               node.nodeType = 'nation';
+              node.nodeColor = 'red';
             } else if (node.name.includes('club')){
               node.nodeType = 'club';
+              node.nodeColor = 'green';
             } else if (node.name.includes('foot')){
               node.nodeType = 'foot';
+              node.nodeColor = 'black';
             } else if (node.name.includes('position')){
               node.nodeType = 'position';
+              node.nodeColor = 'orange';
             }
           }
         }
@@ -229,20 +214,25 @@
       return imports;
     }
 
-    function colorLink(src,tgt){
+    function colorLink(src,tgt,color){
       let link_selections = d3.selectAll(".link");
       let link = link_selections.nodes().filter(function(d){
         return (d3.select(d).data()[0].source.data.name == src && d3.select(d).data()[0].target.data.name == tgt);
       });
-      d3.selectAll(link).style("stroke", "red");
+      // debugger
+      d3.selectAll(link).style("stroke",color);
     }
+    // .style("fill", function(d){
+    //         return d.data.nodeColor;
+    //       });
+    // d3.selectAll(link).style("stroke", "red");
 
-    function colorNode(name){
+    function colorNode(name,color){
       let node_selections = d3.selectAll(".node");
       let node = node_selections.nodes().filter(function(d){
         return d3.select(d).data()[0].data.name == name;
       });
-      d3.selectAll(node).style("fill", "red");
+      d3.selectAll(node).style("fill", color);
     }
     </script>
 
