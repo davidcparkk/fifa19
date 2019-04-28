@@ -81,14 +81,42 @@
       justify-content: center;
       flex-direction: column;
       align-items: center;		
-      width: 180px;					
-      height: 260px;					
+      width: 275px;
+      height: 425px;					
       padding: 2px;				
       font: 17px sans-serif;		
       background: #dcdcdc;	
       border: 1px solid #dcdcdc;		
       border-radius: 8px;			
       pointer-events: none;			
+    }
+    .img-container{
+      height: 130px;
+      width: 100%;
+      border: 1px solid black;
+    }
+    .player-table{
+      height: 100%;
+      width: 100%;
+    }
+    .player-name{
+      height: 30px;
+      font-weight: bold;
+      font-size: 24px;
+      border-bottom: 1px solid gray;
+      padding: 5px;
+    }
+    .player-nation{
+      height: 50px;
+      border: 1px solid black;
+    }
+    .player-club{
+      height: 50px;
+      border: 1px solid black;
+    }
+    .player-info{
+      height: 25px;
+      border: 1px solid black;
     }
     </style>
 </head>
@@ -175,9 +203,9 @@
           div.transition()		
               .duration(200)		
               .style("opacity", .9);		
-          
-          if (false) {
-            div.html("<div class='player-name'>"+d.data.nodeColor+"</div>")	
+
+          if (d.data.nodeType === 'player') {
+            div.html("<div class='player-table'><div class='player-name'>Name</div><div class='img-container'>Img</div><div class='player-nation'>Nation</div><div class='player-club'>Club</div><div class='player-info'>Position</div><div class='player-info'>Foot</div><div class='player-info'>Rating</div><div class='player-info'>Value</div><div class='player-info'>Age</div></div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
           } else {
@@ -194,7 +222,7 @@
           });
           d3.selectAll(".link").style("stroke", "gray");
 
-          div.attr("class",`tooltip`);
+          // div.attr("class",`tooltip`);
           div.transition()		
             .duration(500)		
             .style("opacity", 0);	
