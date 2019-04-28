@@ -56,6 +56,40 @@
       border-radius: 8px;			
       pointer-events: none;			
     }
+
+    div.tooltip-stats {	
+      position: absolute;			
+      text-align: center;	
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;		
+      width: 180px;					
+      height: 130px;					
+      padding: 2px;				
+      font: 17px sans-serif;		
+      background: #dcdcdc;	
+      border: 1px solid #dcdcdc;		
+      border-radius: 8px;			
+      pointer-events: none;			
+    }
+
+    div.tooltip-player {	
+      position: absolute;			
+      text-align: center;	
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;		
+      width: 180px;					
+      height: 260px;					
+      padding: 2px;				
+      font: 17px sans-serif;		
+      background: #dcdcdc;	
+      border: 1px solid #dcdcdc;		
+      border-radius: 8px;			
+      pointer-events: none;			
+    }
     </style>
 </head>
 <body>
@@ -137,12 +171,20 @@
             colorLink(d.data.name, name, d.data.nodeColor);
           });
 
+          div.attr("class",`tooltip-player`);
           div.transition()		
               .duration(200)		
               .style("opacity", .9);		
-          div.html("hello")	
+          
+          if (false) {
+            div.html("<div class='player-name'>"+d.data.nodeColor+"</div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
+          } else {
+            div.html("<div class='class-stats'>Among the top 20 players, there are 5 "+d.data.nodeType+" players</div>")	
+              .style("left", (d3.event.pageX + 50) + "px")		
+              .style("top", (d3.event.pageY - 60) + "px");	
+          }
           })	
         
         .on("mouseout", function(d){
@@ -152,6 +194,7 @@
           });
           d3.selectAll(".link").style("stroke", "gray");
 
+          div.attr("class",`tooltip`);
           div.transition()		
             .duration(500)		
             .style("opacity", 0);	
@@ -194,7 +237,7 @@
       classes.forEach(function(d) {
         find(d.name, d);
       });
-
+      // debugger
       return d3.hierarchy(map[""]);
     }
 
