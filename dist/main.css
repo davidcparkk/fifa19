@@ -1,13 +1,12 @@
-.body{
-  background: blue;
-}
 .node {
-  font: 17px sans-serif;
+  font: 15px sans-serif;
 }
 .node:hover{
   cursor: pointer;
 }
-
+.wrapper{
+  height:850px;
+}
 .link {
   stroke: gray;
   stroke-opacity: 0.5;
@@ -54,15 +53,16 @@ div.tooltip-stats {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 275px;
-  height: 80px;
+  width: 180px;
+  height: 50px;
   text-align: center;
   padding: 20px;
   font: 17px sans-serif;
   background: #dcdcdc;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
-  pointer-events: none;		
+  pointer-events: none;	
+  /* opacity: 0.8;	 */
 }
 .class-stats{
   align-items: center;
@@ -75,16 +75,16 @@ div.tooltip-player {
   justify-content: center;
   flex-direction: column;
   align-items: center;		
-  width: 300px;				
-  padding: 2px;				
-  font: 17px sans-serif;		
+  width: 240px;
+  padding: 5px;			
+  font: 14px sans-serif;		
   background: #E8E8E8;	
   border: 1px solid #dcdcdc;		
   border-radius: 8px;			
   pointer-events: none;			
 }
 .img-container{
-  height: 130px;
+  height: 110px;
   width: 100%;
   border: 1px solid #dcdcdc;
 }
@@ -104,6 +104,7 @@ div.tooltip-player {
   display: flex;
   border: 1px solid #dcdcdc;
   justify-content: space-between;
+  align-items: center;
 }
 .player-club{
   height: 50px;
@@ -112,18 +113,18 @@ div.tooltip-player {
   justify-content: space-between;
 }
 .player-info{
-  height: 25px;
+  height: 20px;
   display: flex;
   border: 1px solid #dcdcdc;
   justify-content: space-between;
-  align-items:center;
-  padding: 4px;
+  align-items: center;
 }
 .image-src{
-  height:100%;
+  height:90%;
 }
 .image-detail{
-  height:100%;
+  height:85%;
+  padding-right:3px;
 }
 .pic-field{
   text-align: left;
