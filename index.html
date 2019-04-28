@@ -241,6 +241,32 @@
         });
     });
 
+    const f = "./dist/assets/fifa_stats.csv";
+    let playerMap={};
+    let playerData = d3.csv(f,function(d){
+      return {
+        id: d.id,
+        name: d.name,
+        age: d.age,
+        player_img: d.player_img,
+        nation: d.nation,
+        nation_img: d.nation_img,
+        rating: d.rating,
+        club: d.club,
+        club_img: d.club_img,
+        value: d.value,
+        wage: d.wage,
+        foot: d.foot
+      };
+    }, function(error, rows) {
+        for(let i = 0; i < rows.length; i++){
+          playerMap[rows[i].id] = rows[i];
+        }  
+        
+        debugger
+    });
+    
+    
     function packageHierarchy(classes) {
       let map = {};
 
