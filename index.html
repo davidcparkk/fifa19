@@ -165,6 +165,30 @@
       .attr("class", "tooltip")				
       .style("opacity", 0);
 
+    let f = "./dist/assets/fifa_stats.csv";
+    let playerMap={};
+    let playerData = d3.csv(f,function(d){
+      return {
+        id: d.id,
+        name: d.name,
+        age: d.age,
+        player_img: d.player_img,
+        nation: d.nation,
+        nation_img: d.nation_img,
+        rating: d.rating,
+        club: d.club,
+        club_img: d.club_img,
+        value: d.value,
+        wage: d.wage,
+        foot: d.foot,
+        position: d.position
+      };
+    }, function(error, rows) {
+        for(let i = 0; i < rows.length; i++){
+          playerMap[i] = rows[i];
+        }  
+    });
+
     d3.json("./dist/assets/fifa_data.json", function(error, classes) {
       if (error) throw error;
       
@@ -208,12 +232,24 @@
               .duration(200)		
               .style("opacity", .9);		
 
+
+                // node.tooltipName = playerMap[node.id].name;
+                // node.tooltipPlayerImg = playerMap[node.id].player_img;
+                // node.tooltipNation = playerMap[node.id].nation;
+                // node.tooltipNationImg = playerMap[node.id].nation_img;
+                // node.tooltipRating = playerMap[node.id].rating;
+                // node.tooltipClub = playerMap[node.id].club;
+                // node.tooltipClubImg = playerMap[node.id].club_img;
+                // node.tooltipValue = playerMap[node.id].value;
+                // node.tooltipWage = playerMap[node.id].wage;
+                // node.tooltipFoot = playerMap[node.id].foot;
+
           if (d.data.nodeType === 'player') {
             div.attr("class",`tooltip-player`);
             div.transition()		
               .duration(200)		
               .style("opacity", .9);		
-            div.html("<div class='player-table'><div class='player-name'>Name</div><div class='img-container'>Img</div><div class='player-nation'>Nation</div><div class='player-club'>Club</div><div class='player-info'>Position</div><div class='player-info'>Rating</div><div class='player-info'>Value</div><div class='player-info'>Foot</div><div class='player-info'>Age</div></div>")	
+            div.html("<div class='player-table'><div class='player-name'>"+d.data.tooltipName+"</div><div class='img-container'>"+d.data.tooltipPlayerImg+"</div><div class='player-nation'>"+d.data.tooltipNation+"</div><div class='player-club'>"+d.data.tooltipClub+"</div><div class='player-info'>"+d.data.tooltipPosition+"</div><div class='player-info'>"+d.data.tooltipFoot+"</div><div class='player-info'>Rating</div><div class='player-info'>"+d.data.tooltipRating+"</div><div class='player-info'>Foot</div><div class='player-info'>"+d.data.tooltipValue+"</div><div class='player-info'>"+d.data.tooltipWage+"</div><div class='player-info'>"+d.data.tooltipAge+"</div></div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
           } else {
@@ -241,28 +277,7 @@
         });
     });
 
-    const f = "./dist/assets/fifa_stats.csv";
-    let playerMap={};
-    let playerData = d3.csv(f,function(d){
-      return {
-        id: d.id,
-        name: d.name,
-        age: d.age,
-        player_img: d.player_img,
-        nation: d.nation,
-        nation_img: d.nation_img,
-        rating: d.rating,
-        club: d.club,
-        club_img: d.club_img,
-        value: d.value,
-        wage: d.wage,
-        foot: d.foot
-      };
-    }, function(error, rows) {
-        for(let i = 0; i < rows.length; i++){
-          playerMap[i] = rows[i];
-        }  
-    });
+    
     
     
     function packageHierarchy(classes) {
@@ -276,6 +291,7 @@
             node.parent = find(name.substring(0, i = name.lastIndexOf(".")));
             node.parent.children.push(node);
             node.key = name.substring(i + 1);
+            
             if (node.imports) {
               node.linkCount = node.imports.length;
             }
@@ -283,6 +299,20 @@
               node.nodeType = 'player';
               node.nodeColor = 'blue';
               node.countText = '';
+              if (node.key!=="player") {
+                node.tooltipName = playerMap[node.id].name;
+                node.tooltipPlayerImg = playerMap[node.id].player_img;
+                node.tooltipNation = playerMap[node.id].nation;
+                node.tooltipNationImg = playerMap[node.id].nation_img;
+                node.tooltipRating = playerMap[node.id].rating;
+                node.tooltipClub = playerMap[node.id].club;
+                node.tooltipClubImg = playerMap[node.id].club_img;
+                node.tooltipValue = playerMap[node.id].value;
+                node.tooltipWage = playerMap[node.id].wage;
+                node.tooltipFoot = playerMap[node.id].foot;
+                node.tooltipPosition = playerMap[node.id].position;
+                node.tooltipAge = playerMap[node.id].age;
+              }
             } else if (node.name.includes('nation')){
               node.nodeType = 'nation';
               node.nodeColor = 'red';
