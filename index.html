@@ -107,20 +107,26 @@
       height: 30px;
       font-weight: bold;
       font-size: 24px;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid #dcdcdc;
       padding: 5px;
     }
     .player-nation{
       height: 50px;
-      border: 1px solid black;
+      display: flex;
+      border: 1px solid #dcdcdc;
+      justify-content: space-between;
     }
     .player-club{
       height: 50px;
-      border: 1px solid black;
+      display: flex;
+      border: 1px solid #dcdcdc;
+      justify-content: space-between;
     }
     .player-info{
       height: 25px;
-      border: 1px solid black;
+      display: flex;
+      border: 1px solid #dcdcdc;
+      justify-content: space-between;
     }
     </style>
 </head>
@@ -232,24 +238,12 @@
               .duration(200)		
               .style("opacity", .9);		
 
-
-                // node.tooltipName = playerMap[node.id].name;
-                // node.tooltipPlayerImg = playerMap[node.id].player_img;
-                // node.tooltipNation = playerMap[node.id].nation;
-                // node.tooltipNationImg = playerMap[node.id].nation_img;
-                // node.tooltipRating = playerMap[node.id].rating;
-                // node.tooltipClub = playerMap[node.id].club;
-                // node.tooltipClubImg = playerMap[node.id].club_img;
-                // node.tooltipValue = playerMap[node.id].value;
-                // node.tooltipWage = playerMap[node.id].wage;
-                // node.tooltipFoot = playerMap[node.id].foot;
-
           if (d.data.nodeType === 'player') {
             div.attr("class",`tooltip-player`);
             div.transition()		
               .duration(200)		
               .style("opacity", .9);		
-            div.html("<div class='player-table'><div class='player-name'>"+d.data.tooltipName+"</div><div class='img-container'>"+d.data.tooltipPlayerImg+"</div><div class='player-nation'>"+d.data.tooltipNation+"</div><div class='player-club'>"+d.data.tooltipClub+"</div><div class='player-info'>"+d.data.tooltipPosition+"</div><div class='player-info'>"+d.data.tooltipFoot+"</div><div class='player-info'>Rating</div><div class='player-info'>"+d.data.tooltipRating+"</div><div class='player-info'>Foot</div><div class='player-info'>"+d.data.tooltipValue+"</div><div class='player-info'>"+d.data.tooltipWage+"</div><div class='player-info'>"+d.data.tooltipAge+"</div></div>")	
+            div.html("<div class='player-table'><div class='player-name'>"+d.data.tooltipName+"</div><div class='img-container'>"+d.data.tooltipPlayerImg+"</div><div class='player-nation'>"+d.data.tooltipNation+"</div><div class='player-club'>"+d.data.tooltipClub+"</div><div class='player-info'><span>Position</span><span>"+d.data.tooltipPosition+"</span></div><div class='player-info'><span>Preferred Foot</span><span>"+d.data.tooltipFoot+"</span></div><div class='player-info'><span>FIFA19 Rating</span><span>"+d.data.tooltipRating+"</span></div><div class='player-info'><span>Market Value</span><span>"+d.data.tooltipValue+"</span></div><div class='player-info'><span>Wages (in Euros)</span><span>"+d.data.tooltipWage+"</span></div><div class='player-info'><span>Age</span><span>"+d.data.tooltipAge+"</span></div></div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
           } else {

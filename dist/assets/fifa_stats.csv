@@ -1,22 +1,22 @@
-id,name,age,player_img,nation,nation_img,rating,club,club_img,value,wage,foot
-0,Leo Messi,31,https://cdn.sofifa.org/players/4/19/158023.png,Argentina,https://cdn.sofifa.org/flags/52.png,94,FC Barcelona,https://cdn.sofifa.org/teams/2/light/241.png,110.5M,565K,Left
-1,Cristiano Ronaldo,33,https://cdn.sofifa.org/players/4/19/20801.png,Portugal,https://cdn.sofifa.org/flags/38.png,94,Juventus,https://cdn.sofifa.org/teams/2/light/45.png,77M,405K,Right
-2,Neymar Jr,26,https://cdn.sofifa.org/players/4/19/190871.png,Brazil,https://cdn.sofifa.org/flags/54.png,92,Paris Saint-Germain,https://cdn.sofifa.org/teams/2/light/73.png,118.5M,290K,Right
-3,David De Gea,27,https://cdn.sofifa.org/players/4/19/193080.png,Spain,https://cdn.sofifa.org/flags/45.png,91,Manchester United,https://cdn.sofifa.org/teams/2/light/11.png,72M,260K,Right
-4,Kevin De Bruyne,27,https://cdn.sofifa.org/players/4/19/192985.png,Belgium,https://cdn.sofifa.org/flags/7.png,91,Manchester City,https://cdn.sofifa.org/teams/2/light/10.png,102M,355K,Right
-5,Eden Hazard,27,https://cdn.sofifa.org/players/4/19/183277.png,Belgium,https://cdn.sofifa.org/flags/7.png,91,Chelsea,https://cdn.sofifa.org/teams/2/light/5.png,93M,340K,Right
-6,Luka Modric,32,https://cdn.sofifa.org/players/4/19/177003.png,Croatia,https://cdn.sofifa.org/flags/10.png,91,Real Madrid,https://cdn.sofifa.org/teams/2/light/243.png,67M,420K,Right
-7,Luis Suarez,31,https://cdn.sofifa.org/players/4/19/176580.png,Uruguay,https://cdn.sofifa.org/flags/60.png,91,FC Barcelona,https://cdn.sofifa.org/teams/2/light/241.png,80M,455K,Right
-8,Sergio Ramos,32,https://cdn.sofifa.org/players/4/19/155862.png,Spain,https://cdn.sofifa.org/flags/45.png,91,Real Madrid,https://cdn.sofifa.org/teams/2/light/243.png,51M,380K,Right
-9,Jan Oblak,25,https://cdn.sofifa.org/players/4/19/200389.png,Slovenia,https://cdn.sofifa.org/flags/44.png,90,Atl�tico Madrid,https://cdn.sofifa.org/teams/2/light/240.png,68M,94K,Right
-10,Robert Lewandowski,29,https://cdn.sofifa.org/players/4/19/188545.png,Poland,https://cdn.sofifa.org/flags/37.png,90,FC Bayern M�nchen,https://cdn.sofifa.org/teams/2/light/21.png,77M,205K,Right
-11,Toni Kroos,28,https://cdn.sofifa.org/players/4/19/182521.png,Germany,https://cdn.sofifa.org/flags/21.png,90,Real Madrid,https://cdn.sofifa.org/teams/2/light/243.png,76.5M,355K,Right
-12,Diego Godin,32,https://cdn.sofifa.org/players/4/19/182493.png,Uruguay,https://cdn.sofifa.org/flags/60.png,90,Atl�tico Madrid,https://cdn.sofifa.org/teams/2/light/240.png,44M,125K,Right
-13,David Silva,32,https://cdn.sofifa.org/players/4/19/168542.png,Spain,https://cdn.sofifa.org/flags/45.png,90,Manchester City,https://cdn.sofifa.org/teams/2/light/10.png,60M,285K,Left
-14,Ngolo Kante,27,https://cdn.sofifa.org/players/4/19/215914.png,France,https://cdn.sofifa.org/flags/18.png,89,Chelsea,https://cdn.sofifa.org/teams/2/light/5.png,63M,225K,Right
-15,Paulo Dybala,24,https://cdn.sofifa.org/players/4/19/211110.png,Argentina,https://cdn.sofifa.org/flags/52.png,89,Juventus,https://cdn.sofifa.org/teams/2/light/45.png,89M,205K,Left
-16,Harry Kane,24,https://cdn.sofifa.org/players/4/19/202126.png,England,https://cdn.sofifa.org/flags/14.png,89,Tottenham Hotspur,https://cdn.sofifa.org/teams/2/light/18.png,83.5M,205K,Right
-17,Antoinne Griezmann,27,https://cdn.sofifa.org/players/4/19/194765.png,France,https://cdn.sofifa.org/flags/18.png,89,Atl�tico Madrid,https://cdn.sofifa.org/teams/2/light/240.png,78M,145K,Left
-18,Marc-Andre ter Stegen,26,https://cdn.sofifa.org/players/4/19/192448.png,Germany,https://cdn.sofifa.org/flags/21.png,89,FC Barcelona,https://cdn.sofifa.org/teams/2/light/241.png,58M,240K,Right
-19,Thibaut Courtois,26,https://cdn.sofifa.org/players/4/19/192119.png,Belgium,https://cdn.sofifa.org/flags/7.png,89,Real Madrid,https://cdn.sofifa.org/teams/2/light/243.png,53.5M,240K,Left
-20,Sergio Busquets,29,https://cdn.sofifa.org/players/4/19/189511.png,Spain,https://cdn.sofifa.org/flags/45.png,89,FC Barcelona,https://cdn.sofifa.org/teams/2/light/241.png,51.5M,315K,Right
+id,name,age,player_img,nation,nation_img,rating,club,club_img,value,wage,foot,position
+0,Leo Messi,31,https://cdn.sofifa.org/players/4/19/158023.png,Argentina,https://cdn.sofifa.org/flags/52.png,94,FC Barcelona,https://cdn.sofifa.org/teams/2/light/241.png,110.5M,565K,Left,Right Forward
+1,Cristiano Ronaldo,33,https://cdn.sofifa.org/players/4/19/20801.png,Portugal,https://cdn.sofifa.org/flags/38.png,94,Juventus,https://cdn.sofifa.org/teams/2/light/45.png,77M,405K,Right,Striker
+2,Neymar Jr,26,https://cdn.sofifa.org/players/4/19/190871.png,Brazil,https://cdn.sofifa.org/flags/54.png,92,Paris Saint-Germain,https://cdn.sofifa.org/teams/2/light/73.png,118.5M,290K,Right,Left Wing
+3,David De Gea,27,https://cdn.sofifa.org/players/4/19/193080.png,Spain,https://cdn.sofifa.org/flags/45.png,91,Manchester United,https://cdn.sofifa.org/teams/2/light/11.png,72M,260K,Right,Goalkeeper
+4,Kevin De Bruyne,27,https://cdn.sofifa.org/players/4/19/192985.png,Belgium,https://cdn.sofifa.org/flags/7.png,91,Manchester City,https://cdn.sofifa.org/teams/2/light/10.png,102M,355K,Right,Right Central Mid
+5,Eden Hazard,27,https://cdn.sofifa.org/players/4/19/183277.png,Belgium,https://cdn.sofifa.org/flags/7.png,91,Chelsea,https://cdn.sofifa.org/teams/2/light/5.png,93M,340K,Right,Left Forward
+6,Luka Modric,32,https://cdn.sofifa.org/players/4/19/177003.png,Croatia,https://cdn.sofifa.org/flags/10.png,91,Real Madrid,https://cdn.sofifa.org/teams/2/light/243.png,67M,420K,Right,Right Central Mid
+7,Luis Suarez,31,https://cdn.sofifa.org/players/4/19/176580.png,Uruguay,https://cdn.sofifa.org/flags/60.png,91,FC Barcelona,https://cdn.sofifa.org/teams/2/light/241.png,80M,455K,Right,Striker
+8,Sergio Ramos,32,https://cdn.sofifa.org/players/4/19/155862.png,Spain,https://cdn.sofifa.org/flags/45.png,91,Real Madrid,https://cdn.sofifa.org/teams/2/light/243.png,51M,380K,Right,Right Center Back
+9,Jan Oblak,25,https://cdn.sofifa.org/players/4/19/200389.png,Slovenia,https://cdn.sofifa.org/flags/44.png,90,Atletico Madrid,https://cdn.sofifa.org/teams/2/light/240.png,68M,94K,Right,Goalkeeper
+10,Robert Lewandowski,29,https://cdn.sofifa.org/players/4/19/188545.png,Poland,https://cdn.sofifa.org/flags/37.png,90,FC Bayern Munchen,https://cdn.sofifa.org/teams/2/light/21.png,77M,205K,Right,Striker
+11,Toni Kroos,28,https://cdn.sofifa.org/players/4/19/182521.png,Germany,https://cdn.sofifa.org/flags/21.png,90,Real Madrid,https://cdn.sofifa.org/teams/2/light/243.png,76.5M,355K,Right,Left Center Mid
+12,Diego Godin,32,https://cdn.sofifa.org/players/4/19/182493.png,Uruguay,https://cdn.sofifa.org/flags/60.png,90,Atletico Madrid,https://cdn.sofifa.org/teams/2/light/240.png,44M,125K,Right,Center Back
+13,David Silva,32,https://cdn.sofifa.org/players/4/19/168542.png,Spain,https://cdn.sofifa.org/flags/45.png,90,Manchester City,https://cdn.sofifa.org/teams/2/light/10.png,60M,285K,Left,Left Center Mid
+14,Ngolo Kante,27,https://cdn.sofifa.org/players/4/19/215914.png,France,https://cdn.sofifa.org/flags/18.png,89,Chelsea,https://cdn.sofifa.org/teams/2/light/5.png,63M,225K,Right,Left Defensive Mid
+15,Paulo Dybala,24,https://cdn.sofifa.org/players/4/19/211110.png,Argentina,https://cdn.sofifa.org/flags/52.png,89,Juventus,https://cdn.sofifa.org/teams/2/light/45.png,89M,205K,Left,Left Forward
+16,Harry Kane,24,https://cdn.sofifa.org/players/4/19/202126.png,England,https://cdn.sofifa.org/flags/14.png,89,Tottenham Hotspur,https://cdn.sofifa.org/teams/2/light/18.png,83.5M,205K,Right,Striker
+17,Antoinne Griezmann,27,https://cdn.sofifa.org/players/4/19/194765.png,France,https://cdn.sofifa.org/flags/18.png,89,Atletico Madrid,https://cdn.sofifa.org/teams/2/light/240.png,78M,145K,Left,Center Attacking Mid
+18,Marc-Andre ter Stegen,26,https://cdn.sofifa.org/players/4/19/192448.png,Germany,https://cdn.sofifa.org/flags/21.png,89,FC Barcelona,https://cdn.sofifa.org/teams/2/light/241.png,58M,240K,Right,Goalkeeper
+19,Thibaut Courtois,26,https://cdn.sofifa.org/players/4/19/192119.png,Belgium,https://cdn.sofifa.org/flags/7.png,89,Real Madrid,https://cdn.sofifa.org/teams/2/light/243.png,53.5M,240K,Left,Goalkeeper
+20,Sergio Busquets,29,https://cdn.sofifa.org/players/4/19/189511.png,Spain,https://cdn.sofifa.org/flags/45.png,89,FC Barcelona,https://cdn.sofifa.org/teams/2/light/241.png,51.5M,315K,Right,Center Defensive Mid
