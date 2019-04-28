@@ -1,25 +1,146 @@
 .body{
-  background-color: #f3f2f2;
+  background: blue;
 }
-
 .node {
-  font: 16px sans-serif;
+  font: 17px sans-serif;
+}
+.node:hover{
+  cursor: pointer;
 }
 
 .link {
-  stroke: #1bc51b;
+  stroke: gray;
   stroke-opacity: 0.5;
   fill: none;
   pointer-events: none;
 }
 
 .title{
-  display:block;
-  max-height: 100px;
-  max-width: 600px;
-  font-size: 45px;
+  display: block;
+  font-size: 50px;
   font-weight: bold;
   align-items: center;
+  justify-content: center;
   text-align: center;
   margin-bottom: 20px;
+}
+
+#main-container{
+  display: flex;
+  justify-content: center;
+}
+
+div.tooltip {	
+  position: absolute;			
+  text-align: center;	
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;		
+  width: 180px;					
+  height: 260px;					
+  padding: 2px;				
+  font: 17px sans-serif;		
+  background: #E8E8E8;	
+  border: 1px solid #dcdcdc;		
+  border-radius: 8px;			
+  pointer-events: none;			
+}
+
+div.tooltip-stats {	
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 275px;
+  height: 80px;
+  text-align: center;
+  padding: 20px;
+  font: 17px sans-serif;
+  background: #dcdcdc;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  pointer-events: none;		
+}
+.class-stats{
+  align-items: center;
+  text-align: center;
+}
+div.tooltip-player {	
+  position: absolute;			
+  text-align: center;	
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;		
+  width: 300px;				
+  padding: 2px;				
+  font: 17px sans-serif;		
+  background: #E8E8E8;	
+  border: 1px solid #dcdcdc;		
+  border-radius: 8px;			
+  pointer-events: none;			
+}
+.img-container{
+  height: 130px;
+  width: 100%;
+  border: 1px solid #dcdcdc;
+}
+.player-table{
+  height: 100%;
+  width: 100%;
+}
+.player-name{
+  height: 30px;
+  font-weight: bold;
+  font-size: 24px;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 5px;
+}
+.player-picture-container{
+  height: 50px;
+  display: flex;
+  border: 1px solid #dcdcdc;
+  justify-content: space-between;
+}
+.player-club{
+  height: 50px;
+  display: flex;
+  border: 1px solid #dcdcdc;
+  justify-content: space-between;
+}
+.player-info{
+  height: 25px;
+  display: flex;
+  border: 1px solid #dcdcdc;
+  justify-content: space-between;
+  align-items:center;
+  padding: 4px;
+}
+.image-src{
+  height:100%;
+}
+.image-detail{
+  height:100%;
+}
+.pic-field{
+  text-align: left;
+}
+.pic-field-bold{
+  text-align: left;
+  font-weight:bold;
+}
+
+.pic-details-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.span-bold{
+  font-weight: bold;
+}
+.span-data{
+
 }

@@ -5,130 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Fifa 19 Data Viz</title>
-
-  <style>
-    .body{
-      background: blue;
-    }
-    .node {
-      font: 17px sans-serif;
-      fill: #1a761a;
-    }
-    .node:hover{
-      cursor: pointer;
-    }
-
-    .link {
-      stroke: gray;
-      stroke-opacity: 0.5;
-      fill: none;
-      pointer-events: none;
-    }
-
-    .title{
-      display: block;
-      font-size: 50px;
-      font-weight: bold;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    #main-container{
-      display: flex;
-      justify-content: center;
-    }
-
-    div.tooltip {	
-      position: absolute;			
-      text-align: center;	
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;		
-      width: 180px;					
-      height: 260px;					
-      padding: 2px;				
-      font: 17px sans-serif;		
-      background: #E8E8E8;	
-      border: 1px solid #dcdcdc;		
-      border-radius: 8px;			
-      pointer-events: none;			
-    }
-
-    div.tooltip-stats {	
-      position: absolute;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      width: 275px;
-      height: 80px;
-      text-align: center;
-      padding: 4px;
-      font: 17px sans-serif;
-      background: #dcdcdc;
-      border: 1px solid #e8e8e8;
-      border-radius: 8px;
-      pointer-events: none;		
-    }
-    .class-stats{
-      align-items: center;
-      text-align: center;
-    }
-    div.tooltip-player {	
-      position: absolute;			
-      text-align: center;	
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;		
-      width: 275px;
-      height: 425px;					
-      padding: 2px;				
-      font: 17px sans-serif;		
-      background: #E8E8E8;	
-      border: 1px solid #dcdcdc;		
-      border-radius: 8px;			
-      pointer-events: none;			
-    }
-    .img-container{
-      height: 130px;
-      width: 100%;
-      border: 1px solid black;
-    }
-    .player-table{
-      height: 100%;
-      width: 100%;
-    }
-    .player-name{
-      height: 30px;
-      font-weight: bold;
-      font-size: 24px;
-      border-bottom: 1px solid #dcdcdc;
-      padding: 5px;
-    }
-    .player-nation{
-      height: 50px;
-      display: flex;
-      border: 1px solid #dcdcdc;
-      justify-content: space-between;
-    }
-    .player-club{
-      height: 50px;
-      display: flex;
-      border: 1px solid #dcdcdc;
-      justify-content: space-between;
-    }
-    .player-info{
-      height: 25px;
-      display: flex;
-      border: 1px solid #dcdcdc;
-      justify-content: space-between;
-    }
-    </style>
+  <link rel="stylesheet" href="./dist/main.css">
 </head>
 <body>
   <script src="dist/bundle.js"></script>
@@ -243,7 +120,7 @@
             div.transition()		
               .duration(200)		
               .style("opacity", .9);		
-            div.html("<div class='player-table'><div class='player-name'>"+d.data.tooltipName+"</div><div class='img-container'>"+d.data.tooltipPlayerImg+"</div><div class='player-nation'>"+d.data.tooltipNation+"</div><div class='player-club'>"+d.data.tooltipClub+"</div><div class='player-info'><span>Position</span><span>"+d.data.tooltipPosition+"</span></div><div class='player-info'><span>Preferred Foot</span><span>"+d.data.tooltipFoot+"</span></div><div class='player-info'><span>FIFA19 Rating</span><span>"+d.data.tooltipRating+"</span></div><div class='player-info'><span>Market Value</span><span>"+d.data.tooltipValue+"</span></div><div class='player-info'><span>Wages (in Euros)</span><span>"+d.data.tooltipWage+"</span></div><div class='player-info'><span>Age</span><span>"+d.data.tooltipAge+"</span></div></div>")	
+            div.html("<div class='player-table'><div class='player-name'>"+d.data.tooltipName+"</div><div class='img-container'><img src='"+d.data.tooltipPlayerImg+"' class='image-src'></div><div class='player-picture-container'><div class='pic-details-container'><div class='pic-field-bold'>Nationality</div><div class='pic-field'>"+d.data.tooltipNation+"</div></div><img src='"+d.data.tooltipNationImg+"' class='image-detail'></div><div class='player-picture-container'><div class='pic-details-container'><div class='pic-field-bold'>Club</div><div class='pic-field'>"+d.data.tooltipClub+"</div></div><img src='"+d.data.tooltipClubImg+"' class='image-detail'></div><div class='player-info'><span class='span-bold'>Position</span><span class='span-data'>"+d.data.tooltipPosition+"</span></div><div class='player-info'><span class='span-bold'>Preferred Foot</span><span class='span-data'>"+d.data.tooltipFoot+"</span></div><div class='player-info'><span class='span-bold'>FIFA19 Rating</span><span class='span-data'>"+d.data.tooltipRating+"</span></div><div class='player-info'><span class='span-bold'>Market Value (in euros)</span><span class='span-data'>"+d.data.tooltipValue+"</span></div><div class='player-info'><span class='span-bold'>Wages (in euros)</span><span class='span-data'>"+d.data.tooltipWage+"</span></div><div class='player-info'><span class='span-bold'>Age</span><span class'span-data'>"+d.data.tooltipAge+"</span></div></div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
           } else {
