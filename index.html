@@ -58,22 +58,26 @@
     }
 
     div.tooltip-stats {	
-      position: absolute;			
-      text-align: center;	
+      position: absolute;
+      text-align: center;
       display: flex;
       justify-content: center;
       flex-direction: column;
-      align-items: center;		
-      width: 180px;					
-      height: 130px;					
-      padding: 2px;				
-      font: 17px sans-serif;		
-      background: #dcdcdc;	
-      border: 1px solid #dcdcdc;		
-      border-radius: 8px;			
-      pointer-events: none;			
+      align-items: center;
+      width: 275px;
+      height: 80px;
+      text-align: center;
+      padding: 4px;
+      font: 17px sans-serif;
+      background: #dcdcdc;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      pointer-events: none;		
     }
-
+    .class-stats{
+      align-items: center;
+      text-align: center;
+    }
     div.tooltip-player {	
       position: absolute;			
       text-align: center;	
@@ -85,7 +89,7 @@
       height: 425px;					
       padding: 2px;				
       font: 17px sans-serif;		
-      background: #dcdcdc;	
+      background: #E8E8E8;	
       border: 1px solid #dcdcdc;		
       border-radius: 8px;			
       pointer-events: none;			
@@ -205,11 +209,19 @@
               .style("opacity", .9);		
 
           if (d.data.nodeType === 'player') {
-            div.html("<div class='player-table'><div class='player-name'>Name</div><div class='img-container'>Img</div><div class='player-nation'>Nation</div><div class='player-club'>Club</div><div class='player-info'>Position</div><div class='player-info'>Foot</div><div class='player-info'>Rating</div><div class='player-info'>Value</div><div class='player-info'>Age</div></div>")	
+            div.attr("class",`tooltip-player`);
+            div.transition()		
+              .duration(200)		
+              .style("opacity", .9);		
+            div.html("<div class='player-table'><div class='player-name'>Name</div><div class='img-container'>Img</div><div class='player-nation'>Nation</div><div class='player-club'>Club</div><div class='player-info'>Position</div><div class='player-info'>Rating</div><div class='player-info'>Value</div><div class='player-info'>Foot</div><div class='player-info'>Age</div></div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
           } else {
-            div.html("<div class='class-stats'>Among the top 20 players, there are 5 "+d.data.nodeType+" players</div>")	
+            div.attr("class",`tooltip-stats`);
+            div.transition()		
+              .duration(200)		
+              .style("opacity", .9);		
+            div.html("<div class='class-stats'>Among the top 20 ranked players in FIFA19, there are "+d.data.linkCount+" player(s) "+d.data.countText+" "+d.data.key+".</div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
           }
@@ -240,21 +252,29 @@
             node.parent = find(name.substring(0, i = name.lastIndexOf(".")));
             node.parent.children.push(node);
             node.key = name.substring(i + 1);
+            if (node.imports) {
+              node.linkCount = node.imports.length;
+            }
             if (node.name.includes('player')) {
               node.nodeType = 'player';
               node.nodeColor = 'blue';
+              node.countText = '';
             } else if (node.name.includes('nation')){
               node.nodeType = 'nation';
               node.nodeColor = 'red';
+              node.countText = 'that are from ';
             } else if (node.name.includes('club')){
               node.nodeType = 'club';
               node.nodeColor = 'green';
+              node.countText = 'that play for ';
             } else if (node.name.includes('foot')){
               node.nodeType = 'foot';
               node.nodeColor = 'black';
+              node.countText = 'whose preferred foot is their ';
             } else if (node.name.includes('position')){
               node.nodeType = 'position';
               node.nodeColor = 'orange';
+              node.countText = 'whose preferred position is ';
             }
           }
         }
