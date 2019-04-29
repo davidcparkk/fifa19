@@ -119,7 +119,7 @@
             div.attr("class",`tooltip-player`);
             div.transition()		
               .duration(200)		
-              .style("opacity", .9);		
+              .style("opacity", .7);		
             div.html("<div class='player-table'><div class='player-name'>"+d.data.tooltipName+"</div><div class='img-container'><img src='"+d.data.tooltipPlayerImg+"' class='image-src'></div><div class='player-picture-container'><div class='pic-details-container'><div class='pic-field-bold'>Nationality</div><div class='pic-field'>"+d.data.tooltipNation+"</div></div><img src='"+d.data.tooltipNationImg+"' class='image-detail'></div><div class='player-picture-container'><div class='pic-details-container'><div class='pic-field-bold'>Club</div><div class='pic-field'>"+d.data.tooltipClub+"</div></div><img src='"+d.data.tooltipClubImg+"' class='image-detail'></div><div class='player-info'><span class='span-bold'>Position</span><span class='span-data'>"+d.data.tooltipPosition+"</span></div><div class='player-info'><span class='span-bold'>Preferred Foot</span><span class='span-data'>"+d.data.tooltipFoot+"</span></div><div class='player-info'><span class='span-bold'>FIFA19 Rating</span><span class='span-data'>"+d.data.tooltipRating+"</span></div><div class='player-info'><span class='span-bold'>Market Value (in euros)</span><span class='span-data'>"+d.data.tooltipValue+"</span></div><div class='player-info'><span class='span-bold'>Wages (in euros)</span><span class='span-data'>"+d.data.tooltipWage+"</span></div><div class='player-info'><span class='span-bold'>Age</span><span class'span-data'>"+d.data.tooltipAge+"</span></div></div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
@@ -168,7 +168,7 @@
             }
             if (node.name.includes('player')) {
               node.nodeType = 'player';
-              node.nodeColor = 'blue';
+              node.nodeColor = '#2e2be2';
               node.countText = '';
               if (node.key!=="player") {
                 node.tooltipName = playerMap[node.id].name;
@@ -186,19 +186,19 @@
               }
             } else if (node.name.includes('nation')){
               node.nodeType = 'nation';
-              node.nodeColor = 'red';
+              node.nodeColor = '#ffae42';
               node.countText = 'that are from ';
             } else if (node.name.includes('club')){
               node.nodeType = 'club';
-              node.nodeColor = 'green';
+              node.nodeColor = '#0d98ba';
               node.countText = 'that play for ';
             } else if (node.name.includes('foot')){
               node.nodeType = 'foot';
-              node.nodeColor = 'black';
+              node.nodeColor = '#800080';
               node.countText = 'whose preferred foot is their ';
             } else if (node.name.includes('position')){
               node.nodeType = 'position';
-              node.nodeColor = 'orange';
+              node.nodeColor = '#ff5349';
               node.countText = 'whose preferred position is ';
             }
           }
