@@ -11,13 +11,22 @@
   <script src="dist/bundle.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   
-  <div class="title">FIFA19 Visualized</div>
+  <div class="title"><img src="./dist/assets/logo.png" class="logo"></div>
   <img src="" class="background-image">
   
   <div class="wrapper">
     <div class="row" id="main-container">
       <div id="fifa19-bundle"></div>
-      <div class="bundle-details"></div>
+      <div class="bundle-details">
+        <div class="graph-detail-container">
+          <div class="fifa19-detail-title">FIFA19 Visualized</div>
+          <div class="fifa19-methodology">A look at the top 20 players of the world (ratings based on FIFA19 data) and their details including club, country, position, preferred foot, market value, wages, and age. Hover over each node to get player details and highlight their related items on the graph.</div>
+          <div class="fifa19-methodology">Technologies used: D3, Javascript, CSS</div>
+          <div class="fifa19-methodology">FIFA19 is a football simulation video game developed by Electronic Arts, released on September 28, 2018. FIFA19 Ratings showcase the top players in the game based on their actual performances from the past year of world football. The data set was acquired via Kaggle available <a href="https://www.kaggle.com/karangadiya/fifa19">here.</a></div>
+          <div class="fifa19-methodology">Created by David Park</div>
+          
+        </div>
+      </div>
     </div>
   </div>
 
@@ -119,15 +128,15 @@
             div.attr("class",`tooltip-player`);
             div.transition()		
               .duration(200)		
-              .style("opacity", .7);		
+              .style("opacity", .8);		
             div.html("<div class='player-table'><div class='player-name'>"+d.data.tooltipName+"</div><div class='img-container'><img src='"+d.data.tooltipPlayerImg+"' class='image-src'></div><div class='player-picture-container'><div class='pic-details-container'><div class='pic-field-bold'>Nationality</div><div class='pic-field'>"+d.data.tooltipNation+"</div></div><img src='"+d.data.tooltipNationImg+"' class='image-detail'></div><div class='player-picture-container'><div class='pic-details-container'><div class='pic-field-bold'>Club</div><div class='pic-field'>"+d.data.tooltipClub+"</div></div><img src='"+d.data.tooltipClubImg+"' class='image-detail'></div><div class='player-info'><span class='span-bold'>Position</span><span class='span-data'>"+d.data.tooltipPosition+"</span></div><div class='player-info'><span class='span-bold'>Preferred Foot</span><span class='span-data'>"+d.data.tooltipFoot+"</span></div><div class='player-info'><span class='span-bold'>FIFA19 Rating</span><span class='span-data'>"+d.data.tooltipRating+"</span></div><div class='player-info'><span class='span-bold'>Market Value (in euros)</span><span class='span-data'>"+d.data.tooltipValue+"</span></div><div class='player-info'><span class='span-bold'>Wages (in euros)</span><span class='span-data'>"+d.data.tooltipWage+"</span></div><div class='player-info'><span class='span-bold'>Age</span><span class'span-data'>"+d.data.tooltipAge+"</span></div></div>")	
-              .style("left", (d3.event.pageX + 50) + "px")		
-              .style("top", (d3.event.pageY - 60) + "px");	
+              .style("left", (d3.event.pageX + 70) + "px")		
+              .style("top", (d3.event.pageY - 200) + "px");	
           } else {
             div.attr("class",`tooltip-stats`);
             div.transition()		
               .duration(200)		
-              .style("opacity", .6);		
+              .style("opacity", .7);		
             div.html("<div class='class-stats'>There are "+d.data.linkCount+" player(s) "+d.data.countText+" "+d.data.key+".</div>")	
               .style("left", (d3.event.pageX + 50) + "px")		
               .style("top", (d3.event.pageY - 60) + "px");	
