@@ -1,3 +1,10 @@
+body{
+  font-family: 'Nunito', sans-serif;
+  /* background: gray; */
+}
+#fifa19-bundle{
+  font-family: 'Nunito', sans-serif;
+}
 .node {
   font: 15px sans-serif;
 }
@@ -5,7 +12,8 @@
   cursor: pointer;
 }
 .wrapper{
-  height:750px;
+  height:700px;
+  margin-top: -30px;
   /* background-color: rgb(99, 230, 153); */
 }
 
@@ -23,7 +31,7 @@
 .bundle-details{
   display:flex;
   width: 40%;
-  padding-top: 50px;
+  padding-bottom: 70px;
 }
 .title{
   display: block;
@@ -32,28 +40,35 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  
+}
+.logo-small{
+  height: 25px;
+  cursor:pointer;
+  padding-left: 2px;
 }
 .logo{
   height: 175px;
 }
 .fifa19-detail-title{
   font-weight:bold;
+  font-family: 'Nunito', sans-serif;
   font-size:35px;
-  padding: 25px;
+  padding: 20px;
 }
 .fifa19-methodology{
-  font-size:24px;
-  padding: 25px;
+  font-size:20px;
+  font-family: 'Nunito', sans-serif;
+  padding: 20px;
 }
 .row{
   display: flex;
-  padding-left: 150px;
-  padding-right: 200px;
+  padding-left: 50px;
+  padding-right: 50px;
   justify-content: space-between;
 }
 
 div.tooltip {	
+  font-family: 'Nunito', sans-serif;
   position: absolute;			
   text-align: center;	
   display: flex;
@@ -69,6 +84,7 @@ div.tooltip {
 }
 
 div.tooltip-stats {	
+  font-family: 'Nunito', sans-serif;
   position: absolute;
   text-align: center;
   display: flex;
@@ -87,10 +103,12 @@ div.tooltip-stats {
   /* opacity: 0.8;	 */
 }
 .class-stats{
+  font-family: 'Nunito', sans-serif;
   align-items: center;
   text-align: center;
 }
 div.tooltip-player {	
+  font-family: 'Nunito', sans-serif;
   position: absolute;			
   text-align: center;	
   display: flex;
@@ -115,13 +133,16 @@ div.tooltip-player {
   width: 100%;
 }
 .player-name{
-  height: 30px;
+  font-family: 'Nunito', sans-serif;
+  height: 60px;
+  text-align: center;
   font-weight: bold;
   font-size: 24px;
   border-bottom: 1px solid #dcdcdc;
   padding: 5px;
 }
 .player-picture-container{
+  font-family: 'Nunito', sans-serif;
   height: 50px;
   display: flex;
   border: 1px solid #dcdcdc;
@@ -129,12 +150,14 @@ div.tooltip-player {
   align-items: center;
 }
 .player-club{
+  font-family: 'Nunito', sans-serif;
   height: 50px;
   display: flex;
   border: 1px solid #dcdcdc;
   justify-content: space-between;
 }
 .player-info{
+  font-family: 'Nunito', sans-serif;
   height: 20px;
   display: flex;
   border: 1px solid #dcdcdc;
