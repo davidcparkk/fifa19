@@ -34,7 +34,9 @@
   </div>
 
   <script>
+    document.addEventListener('DOMContentLoaded',function(e){
 
+    
     let diameter = 600,
     radius = diameter / 2,
     innerRadius = radius - 130;
@@ -263,6 +265,7 @@
       });
       d3.selectAll(node).style("fill", color);
     }
+  });
     </script>
 
 </body>
